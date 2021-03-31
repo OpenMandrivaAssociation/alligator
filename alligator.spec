@@ -1,11 +1,15 @@
-%define snapshot 20200710
-%define commit ae62f708713657e9eb8e614a6b1b95613d34ae11
+#define snapshot 20210401
+#define commit 8a1b4228388d3284e0f112bfb2aa500e196e0f1d
 
 Name:		alligator
-Version:	0.0
+Version:	0.1
 Release:	%{?snapshot:0.%{snapshot}.}1
 Summary:	RSS reader for Plasma Mobile
+%if 0%{?snapshot}
 Source0:	https://invent.kde.org/plasma-mobile/alligator/-/archive/master/alligator-master.tar.bz2
+%else
+Source0:	https://invent.kde.org/plasma-mobile/alligator/-/archive/v%{version}/alligator-v%{version}.tar.bz2
+%endif
 License:	GPLv3
 Group:		Applications/Productivity
 BuildRequires:	cmake
@@ -30,7 +34,11 @@ BuildRequires:	pkgconfig(openssl)
 RSS reader for Plasma Mobile
 
 %prep
+%if 0%{?snapshot}
 %autosetup -p1 -n alligator-master
+%else
+%autosetup -p1 -n alligator-v%{version}
+%endif
 %cmake_kde5 -G Ninja
 
 %build
