@@ -2,8 +2,8 @@
 #define commit 8a1b4228388d3284e0f112bfb2aa500e196e0f1d
 
 Name:		alligator
-Version:	21.06
-Release:	%{?snapshot:0.%{snapshot}.}1
+Version:	21.07
+Release:	%{?snapshot:1.%{snapshot}.}1
 Summary:	RSS reader for Plasma Mobile
 %if 0%{?snapshot}
 Source0:	https://invent.kde.org/plasma-mobile/alligator/-/archive/master/alligator-master.tar.bz2
