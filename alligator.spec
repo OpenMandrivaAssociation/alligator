@@ -2,7 +2,7 @@
 #define commit 8a1b4228388d3284e0f112bfb2aa500e196e0f1d
 
 Name:		alligator
-Version:	21.08
+Version:	21.12
 Release:	%{?snapshot:1.%{snapshot}.}1
 Summary:	RSS reader for Plasma Mobile
 %if 0%{?snapshot}
