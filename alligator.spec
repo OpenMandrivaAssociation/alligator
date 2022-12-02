@@ -2,7 +2,7 @@
 #define commit 8a1b4228388d3284e0f112bfb2aa500e196e0f1d
 
 Name:		alligator
-Version:	22.09
+Version:	22.11
 Release:	%{?snapshot:1.%{snapshot}.}1
 Summary:	RSS reader for Plasma Mobile
 %if 0%{?snapshot}
@@ -22,6 +22,7 @@ BuildRequires:	cmake(Qt5Gui)
 BuildRequires:	cmake(Qt5QuickControls2)
 BuildRequires:	cmake(Qt5Sql)
 BuildRequires:	cmake(KF5CoreAddons)
+BuildRequires:	cmake(KF5KirigamiAddons)
 BuildRequires:	cmake(KF5Syndication)
 BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5I18n)
