@@ -1,14 +1,15 @@
-#define snapshot 20210401
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+#define git 20210401
 #define commit 8a1b4228388d3284e0f112bfb2aa500e196e0f1d
 
 Name:		alligator
-Version:	23.01.0
-Release:	%{?snapshot:1.%{snapshot}.}1
+Version:	23.08.0
+Release:	%{?git:0.%{git}.}1
 Summary:	RSS reader for Plasma Mobile
-%if 0%{?snapshot}
+%if 0%{?git}
 Source0:	https://invent.kde.org/plasma-mobile/alligator/-/archive/master/alligator-master.tar.bz2
 %else
-Source0:	https://download.kde.org/stable/plasma-mobile/%{version}/alligator-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %endif
 License:	GPLv3
 Group:		Applications/Productivity
@@ -35,7 +36,7 @@ BuildRequires:	pkgconfig(openssl)
 RSS reader for Plasma Mobile
 
 %prep
-%if 0%{?snapshot}
+%if 0%{?git}
 %autosetup -p1 -n alligator-master
 %else
 %autosetup -p1
