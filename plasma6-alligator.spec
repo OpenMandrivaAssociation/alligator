@@ -1,13 +1,15 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
-#define git 20210401
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 #define commit 8a1b4228388d3284e0f112bfb2aa600e196e0f1d
 
 Name:		plasma6-alligator
-Version:	24.01.95
+Version:	24.01.96
 Release:	%{?git:0.%{git}.}1
 Summary:	RSS reader for Plasma Mobile
 %if 0%{?git}
-Source0:	https://invent.kde.org/plasma-mobile/alligator/-/archive/master/alligator-master.tar.bz2
+Source0:	https://invent.kde.org/plasma-mobile/alligator/-/archive/%{gitbranch}/alligator-%{gitbranchd}.tar.bz2
 %else
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/alligator-%{version}.tar.xz
 %endif
@@ -37,9 +39,9 @@ RSS reader for Plasma Mobile
 
 %prep
 %if 0%{?git}
-%autosetup -p1 -n alligator-master
+%autosetup -p1 -n alligator-%{gitbranchd}
 %else
-%autosetup -p1 -n alligator-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n alligator-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %endif
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
