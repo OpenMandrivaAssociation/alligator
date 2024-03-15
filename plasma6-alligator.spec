@@ -6,7 +6,7 @@
 
 Name:		plasma6-alligator
 Version:	24.02.0
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 Summary:	RSS reader for Plasma Mobile
 %if 0%{?git}
 Source0:	https://invent.kde.org/plasma-mobile/alligator/-/archive/%{gitbranch}/alligator-%{gitbranchd}.tar.bz2
