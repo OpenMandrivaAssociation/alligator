@@ -5,7 +5,7 @@
 #define commit 8a1b4228388d3284e0f112bfb2aa600e196e0f1d
 
 Name:		alligator
-Version:	25.04.0
+Version:	25.04.3
 Release:	%{?git:0.%{git}.}1
 Summary:	RSS reader for Plasma Mobile
 %if 0%{?git}
@@ -15,8 +15,6 @@ Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/alliga
 %endif
 License:	GPLv3
 Group:		Applications/Productivity
-BuildRequires:	cmake
-BuildRequires:	ninja
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt6Core)
 BuildRequires:	cmake(Qt6Quick)
@@ -35,27 +33,15 @@ BuildRequires:	cmake(KF6Kirigami2)
 BuildRequires:	cmake(Qt6Widgets)
 BuildRequires:	pkgconfig(openssl)
 
+%rename plasma6-alligator
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
 %description
 RSS reader for Plasma Mobile
 
-%prep
-%if 0%{?git}
-%autosetup -p1 -n alligator-%{gitbranchd}
-%else
-%autosetup -p1 -n alligator-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%endif
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja -G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-%find_lang alligator
-
-%files -f alligator.lang
+%files -f %{name}.lang
 %{_bindir}/alligator
 %{_datadir}/applications/org.kde.alligator.desktop
 %{_datadir}/icons/hicolor/scalable/apps/alligator.svg
