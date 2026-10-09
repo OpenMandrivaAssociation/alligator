@@ -5,8 +5,8 @@
 #define commit 8a1b4228388d3284e0f112bfb2aa600e196e0f1d
 
 Name:		alligator
-Version:	26.08.1
-Release:	%{?git:0.%{git}.}2
+Version:	26.08.2
+Release:	%{?git:0.%{git}.}1
 Summary:	RSS reader for Plasma Mobile
 %if 0%{?git}
 Source0:	https://invent.kde.org/plasma-mobile/alligator/-/archive/%{gitbranch}/alligator-%{gitbranchd}.tar.bz2
